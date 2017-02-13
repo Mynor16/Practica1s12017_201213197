@@ -1,13 +1,25 @@
 digraph G 
- {Cero;
-Uno;
-Dos;
-Tres;
-Cuatro;
-Cinco;
-Cero->Uno;
-Uno->Dos;
-Dos->Tres;
-Tres->Cuatro;
-Cuatro->Cinco;
+ {hola;
+mundo;
+como;
+estas;
+uno;
+dos;
+tres;
+universidad;
+practica;
+primera;
+correo;
+juego;
+hola->mundo;
+mundo->como;
+como->estas;
+estas->uno;
+uno->dos;
+dos->tres;
+tres->universidad;
+universidad->practica;
+practica->primera;
+primera->correo;
+correo->juego;
 }
