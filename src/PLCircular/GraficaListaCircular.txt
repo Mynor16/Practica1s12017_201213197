@@ -1,0 +1,12 @@
+digraph G 
+ {Mynor;
+Anita;
+Toño;
+Josuesín;
+Tobiberto;
+Mynor->Anita;
+Anita->Toño;
+Toño->Josuesín;
+Josuesín->Tobiberto;
+Tobiberto->Mynor;
+}

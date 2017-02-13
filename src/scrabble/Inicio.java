@@ -14,6 +14,7 @@ import javax.swing.JFileChooser;
 public class Inicio extends javax.swing.JFrame {
 
     public static PLSimple.ListaSimple lsPalabras;
+    public static PLCircular.ListaCircular lcJugadores;
     /**
      * Creates new form Inicio
      */
@@ -28,6 +29,13 @@ public class Inicio extends javax.swing.JFrame {
         lsPalabras.LSIncertFinal("Cuatro");
         lsPalabras.LSIncertFinal("Cinco");
         lsPalabras.graficar();*/
+        lcJugadores= new PLCircular.ListaCircular();
+        lcJugadores.LCIncertFinal("Mynor");
+        lcJugadores.LCIncertFinal("Anita");
+        lcJugadores.LCIncertFinal("Toño");
+        lcJugadores.LCIncertFinal("Josuesín");
+        lcJugadores.LCIncertFinal("Tobiberto");
+        lcJugadores.graficarCirculo();
     }
 
     /**
@@ -93,10 +101,10 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCargarActionPerformed
-        // TODO add your handling code here:
+        
+        
         //codigo que abre el filechooser para obtener el url del archivo xml a abrir
          String path="";
-        
             JFileChooser abrirArchivo = new JFileChooser();
             //Con esto solamente podamos abrir archivos
             abrirArchivo.setFileSelectionMode( JFileChooser.FILES_ONLY );
