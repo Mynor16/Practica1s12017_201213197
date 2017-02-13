@@ -11,8 +11,10 @@ package PLSimple;
 public class NodoLSimple {
             String palabra;
             NodoLSimple siguiente;
- void NodoLSimple(){
-    this.palabra = new String();
+            int valor;
+public void NodoLSimple(){
+    this.palabra = "";
+    this.valor = 0;
     this.siguiente = null;
 
 }

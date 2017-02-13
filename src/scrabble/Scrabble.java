@@ -17,6 +17,7 @@ public class Scrabble {
         // TODO code application logic here
         Inicio inicio = new Inicio();
         inicio.setVisible(true);
+        GeneradorJPG generador = new GeneradorJPG();
         
     }
 }

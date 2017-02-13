@@ -15,6 +15,14 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
+        PLSimple.ListaSimple lsPalabras = new PLSimple.ListaSimple();
+        lsPalabras.LSIncertFinal("Cero");
+        lsPalabras.LSIncertFinal("Uno");
+        lsPalabras.LSIncertFinal("Dos");
+        lsPalabras.LSIncertFinal("Tres");
+        lsPalabras.LSIncertFinal("Cuatro");
+        lsPalabras.LSIncertFinal("Cinco");
+        lsPalabras.graficar();
     }
 
     /**
@@ -36,6 +44,11 @@ public class Inicio extends javax.swing.JFrame {
         ButtonJugar.setText("Jugar");
 
         ButtonCargar.setText("Cargar Archivo");
+        ButtonCargar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonCargarActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic Light", 1, 24)); // NOI18N
         jLabel1.setText("Scrabble");
@@ -45,12 +58,12 @@ public class Inicio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(ButtonCargar))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(ButtonJugar)
                         .addGap(0, 321, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -73,6 +86,10 @@ public class Inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ButtonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCargarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ButtonCargarActionPerformed
 
     /**
      * @param args the command line arguments

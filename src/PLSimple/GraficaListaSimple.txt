@@ -1,0 +1,13 @@
+digraph G 
+ {Cero;
+Uno;
+Dos;
+Tres;
+Cuatro;
+Cinco;
+Cero->Uno;
+Uno->Dos;
+Dos->Tres;
+Tres->Cuatro;
+Cuatro->Cinco;
+}
