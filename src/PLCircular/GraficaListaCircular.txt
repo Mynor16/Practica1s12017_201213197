@@ -1,12 +1,12 @@
 digraph G 
- {Mynor;
-Anita;
-Toño;
-Josuesín;
-Tobiberto;
-Mynor->Anita;
-Anita->Toño;
-Toño->Josuesín;
-Josuesín->Tobiberto;
-Tobiberto->Mynor;
+ {uno;
+dos;
+tres;
+cuatro;
+cinco;
+uno->dos;
+dos->tres;
+tres->cuatro;
+cuatro->cinco;
+cinco->uno;
 }

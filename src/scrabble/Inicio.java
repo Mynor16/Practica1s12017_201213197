@@ -22,6 +22,7 @@ public class Inicio extends javax.swing.JFrame {
         initComponents();
         
         lsPalabras =new PLSimple.ListaSimple();
+        lcJugadores= new PLCircular.ListaCircular();
         /*lsPalabras.LSIncertFinal("Cero");
         lsPalabras.LSIncertFinal("Uno");
         lsPalabras.LSIncertFinal("Dos");
@@ -29,13 +30,13 @@ public class Inicio extends javax.swing.JFrame {
         lsPalabras.LSIncertFinal("Cuatro");
         lsPalabras.LSIncertFinal("Cinco");
         lsPalabras.graficar();*/
-        lcJugadores= new PLCircular.ListaCircular();
+        /*
         lcJugadores.LCIncertFinal("Mynor");
         lcJugadores.LCIncertFinal("Anita");
         lcJugadores.LCIncertFinal("Toño");
         lcJugadores.LCIncertFinal("Josuesín");
         lcJugadores.LCIncertFinal("Tobiberto");
-        lcJugadores.graficarCirculo();
+        lcJugadores.graficarCirculo();*/
     }
 
     /**
@@ -55,6 +56,12 @@ public class Inicio extends javax.swing.JFrame {
         setResizable(false);
 
         ButtonJugar.setText("Jugar");
+        ButtonJugar.setEnabled(false);
+        ButtonJugar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ButtonJugarActionPerformed(evt);
+            }
+        });
 
         ButtonCargar.setText("Cargar Archivo");
         ButtonCargar.addActionListener(new java.awt.event.ActionListener() {
@@ -101,7 +108,7 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ButtonCargarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonCargarActionPerformed
-        
+       
         
         //codigo que abre el filechooser para obtener el url del archivo xml a abrir
          String path="";
@@ -129,8 +136,19 @@ public class Inicio extends javax.swing.JFrame {
         //invocación a analizador.
         Lectorxml lector = new Lectorxml(path);
          lsPalabras.graficar();
+         if(!lsPalabras.LSvacia()){
+             ButtonJugar.setEnabled(true);
+             
+         }
         
     }//GEN-LAST:event_ButtonCargarActionPerformed
+
+    private void ButtonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonJugarActionPerformed
+        // TODO add your handling code here:
+        FormularioJugadores Jugadores = new FormularioJugadores();
+        Jugadores.setVisible(true);
+        
+    }//GEN-LAST:event_ButtonJugarActionPerformed
 
     /**
      * @param args the command line arguments
