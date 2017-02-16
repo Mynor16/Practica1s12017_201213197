@@ -1,12 +1,12 @@
 digraph G 
- {uno;
-dos;
-tres;
-cuatro;
-cinco;
-uno->dos;
-dos->tres;
-tres->cuatro;
-cuatro->cinco;
-cinco->uno;
+ {Leonel;
+Ana;
+Mynor;
+Cos;
+Mono;
+Leonel->Ana;
+Ana->Mynor;
+Mynor->Cos;
+Cos->Mono;
+Mono->Leonel;
 }

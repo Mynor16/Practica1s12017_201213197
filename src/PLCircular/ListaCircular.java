@@ -142,8 +142,8 @@ public class ListaCircular {
             }while(aux != inicio);
             
             textoLista="digraph G \n {"+nodosC+relacionesC+"}";
-            System.out.println(textoLista);
-            pathLC = "C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\GraficaListaCircular.txt";
+            System.out.println(textoLista);//C:\\Program Files (x86)\\Graphviz2.38\\bin
+            pathLC = "C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\GraficaListaCircular.dot";
             //el siguiente bloque de codigo genera el archivo .txt que será compilado en graphviz
             //creamos el archivo
             File archivo = new File(pathLC);

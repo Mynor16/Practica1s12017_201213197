@@ -10,12 +10,14 @@ package PCola;
  */
 public class NodoCola {
     
+    public int IDFicha;
     public char letra;
     public int valor;
     public NodoCola siguiente;
     
     public NodoCola(){
-        letra = 0;
+        IDFicha=0;
+        letra =' ';
         valor = 1;
         siguiente = null;
     }

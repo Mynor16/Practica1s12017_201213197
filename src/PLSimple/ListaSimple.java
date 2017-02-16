@@ -57,7 +57,7 @@ public class ListaSimple {
             }
             // Agrega el nuevo nodo al final de la lista.
             aux.siguiente = nuevo;
-            System.out.println("el nodo "+cantidad+" tomará el valo: "+nuevo.palabra);
+            System.out.println("el nodo "+cantidad+" ya tomó el valo: "+nuevo.palabra);
         }
         // Incrementa el contador de tamaño de la lista
         this.cantidad++;
@@ -88,7 +88,7 @@ public class ListaSimple {
             // une las dos partes del archivo en una sola cadena y le agrega el encabezado
             textoLista="digraph G \n {"+nodos+relaciones+"}";
             System.out.println(textoLista);
-            pathLS = "C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLSimple\\GraficaListaSimple.txt";
+            pathLS = "C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLSimple\\GraficaListaSimple.dot";
             //el siguiente bloque de codigo genera el archivo .txt que será compilado en graphviz
             //creamos el archivo
             File archivo = new File(pathLS);

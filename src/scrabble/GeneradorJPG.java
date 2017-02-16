@@ -14,8 +14,7 @@ public class GeneradorJPG {
     }
     public static void generarGrafo(String pathTXT,String pathJPG){
          try {
-      //String dotPath = "C:\Users\Mynor\Documents\software\graphviz\bin\dot.exe";
-      String dotPath = "C:\\sers\\Mynor\\Documents\\software\\graphviz\\bin\\dot.exe";
+      String dotPath = "C:\\Program Files (x86)\\Graphviz2.38\\bin\\dot.exe";
       
       String fileInputPath = pathTXT;
       String fileOutputPath = pathJPG;

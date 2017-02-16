@@ -33,6 +33,7 @@ public class Lectorxml {
 
 	boolean bpalabra = false;
         boolean bcasilla = false;
+        boolean bdimension = false;
 
 	public void startElement(String uri, String localName,String qName,
                 Attributes attributes) throws SAXException {
@@ -45,6 +46,9 @@ public class Lectorxml {
 
 		if (qName.equalsIgnoreCase("casilla")) {
 			bcasilla = true;
+		}
+                if (qName.equalsIgnoreCase("dimension")) {
+			bdimension = true;
 		}
 
 
@@ -69,6 +73,10 @@ public class Lectorxml {
 
 		if (bcasilla) {
 			System.out.println("casilla : " + new String(ch, start, length));
+			bcasilla = false;
+		}
+                if (bdimension) {
+			System.out.println("dimensión : " + new String(ch, start, length));
 			bcasilla = false;
 		}
 

@@ -6,6 +6,7 @@ package scrabble;
 
 import java.io.*;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -15,14 +16,18 @@ public class Inicio extends javax.swing.JFrame {
 
     public static PLSimple.ListaSimple lsPalabras;
     public static PLCircular.ListaCircular lcJugadores;
+    public static PCola.Cola colaFichas;
     /**
      * Creates new form Inicio
      */
     public Inicio() {
         initComponents();
+        System.out.println("el numero aleatorio generado es es : "+(int) (Math.random()*100));
+        //System.out.println("el timpo del sistema en milisegundos es : "+((System.currentTimeMillis()%100))/4);
         
         lsPalabras =new PLSimple.ListaSimple();
         lcJugadores= new PLCircular.ListaCircular();
+        colaFichas = new PCola.Cola();
         /*lsPalabras.LSIncertFinal("Cero");
         lsPalabras.LSIncertFinal("Uno");
         lsPalabras.LSIncertFinal("Dos");
@@ -38,6 +43,177 @@ public class Inicio extends javax.swing.JFrame {
         lcJugadores.LCIncertFinal("Tobiberto");
         lcJugadores.graficarCirculo();*/
     }
+    
+    
+    //metodo que llena la cola de fichas para iniciar el juego.
+    public void llenadoColaInicial(){
+        int random = 0;
+        //int a,b,c,d,e,f,g,h,i,j,m,n,ñ,o,p,q,r,s,t,u,v,x,y,z;
+        int na,nb,nc,nd,ne,nf,ng,nh,ni,nj,nl,nn,nm,nñ,no,np,nq,nr,ns,nt,nu,nv,nx,ny,nz;
+        na=nb=nc=nd=ne=nf=ng=nh=ni=nj=nl=nn=nm=nñ=no=np=nq=nr=ns=nt=nu=nv=nx=ny=nz=0;
+        
+        for(int k=1; k<90;){
+            //random = (int) (System.currentTimeMillis()%100)/4;
+            random = (int) (Math.random()*100);
+            System.out.println(k+") provando valor "+ random + " para la cola");
+            
+                switch(random){
+                    
+                    case 1:{
+                        if(nz<1){colaFichas.IncertarFicha('z',10);
+                        k++;
+                        nz++;}
+                        break;
+                    }
+                    case 2:{
+                        if(nx<1){colaFichas.IncertarFicha('x',8);
+                        k++;
+                        nx++;}
+                        break;
+                    }
+                    case 3:{
+                        if(nñ<1){colaFichas.IncertarFicha('ñ',8);
+                        k++;
+                        nñ++;}
+                    }
+                    case 4:{
+                        if(nj<1){colaFichas.IncertarFicha('j',8);
+                        k++;
+                        nj++;}
+                        break;
+                    }
+                     case 5:{
+                        if(nq<1){colaFichas.IncertarFicha('q',5);
+                        k++;
+                        nq++;}
+                        break;
+                    }
+                    case 6:{
+                        if(ny<1){colaFichas.IncertarFicha('y',4);
+                        k++;
+                        ny++;}
+                        break;
+                    }
+                    case 7:{
+                        if(nv<1){colaFichas.IncertarFicha('v',4);
+                        k++;
+                        nv++;}
+                        break;
+                    }
+                    case 8:{
+                        if(nf<1){colaFichas.IncertarFicha('f',4);
+                        k++;
+                        nf++;}
+                        break;
+                    }
+                    case 9:{
+                        if(nh<2){colaFichas.IncertarFicha('h',5);
+                        nh++;}
+                        break;
+                    }
+                    case 10:{
+                        if(np<2){colaFichas.IncertarFicha('p',3);
+                        k++;
+                        np++;}
+                        break;
+                    }    
+                    case 11:{
+                        if(nm<2){colaFichas.IncertarFicha('m',3);
+                        k++;
+                        nm++;}
+                        break;
+                    }    
+                    case 12:{
+                        if(nb<2){colaFichas.IncertarFicha('b',3);
+                        k++;
+                        nb++;}
+                        break;
+                    }    
+                    case 13:{
+                        if(nc<4){colaFichas.IncertarFicha('c',3);
+                        k++;
+                        nc++;}
+                        break;
+                    }    
+                    case 14:{
+                        if(ng<2){colaFichas.IncertarFicha('g',2);
+                        k++;
+                        ng++;}
+                        break;
+                    }    
+                    case 15:{
+                        if(nd<5){colaFichas.IncertarFicha('d',2);
+                        k++;
+                        nd++;}
+                        break;
+                    }
+                    case 16:{
+                        if(nt<4){colaFichas.IncertarFicha('t',1);
+                        k++;
+                        nt++;}
+                        break;
+                    }
+                        case 17:{
+                        if(nu<5){colaFichas.IncertarFicha('u',1);
+                        k++;
+                        nu++;}
+                        break;
+                    }
+                        case 18:{
+                        if(nr<5){colaFichas.IncertarFicha('r',1);
+                        k++;
+                        nr++;}
+                        break;
+                    }
+                        case 19:{
+                        if(nl<4){colaFichas.IncertarFicha('l',1);
+                        nl++;}
+                        break;
+                    }
+                     case 20:{
+                        if(nn<5){colaFichas.IncertarFicha('n',1);
+                        k++;
+                        nn++;}
+                        break;
+                    }
+                        case 21:{
+                        if(ns<6){colaFichas.IncertarFicha('s',1);
+                        k++;
+                        ns++;}
+                        break;
+                    }
+                        case 22:{
+                        if(ni<6){colaFichas.IncertarFicha('i',1);
+                        k++;
+                        ni++;}
+                        break;
+                    }
+                        case 23:{
+                        if(no<9){colaFichas.IncertarFicha('o',1);
+                        k++;
+                        no++;}
+                        break;
+                    }
+                        case 24:{
+                        if(ne<12){colaFichas.IncertarFicha('e',1);
+                        k++;
+                        ne++;}
+                        break;
+                    }
+                        case 25:{
+                        if(na<12){colaFichas.IncertarFicha('a',1);
+                        k++;
+                        na++;}
+                        break;
+                    }
+                        
+                }
+        }
+        
+       colaFichas.graficar();
+       System.out.println("la cola fue llenada y graficada exitosamente");
+    }
+    //fin metodo llenarndo cola inicial
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,9 +288,10 @@ public class Inicio extends javax.swing.JFrame {
         
         //codigo que abre el filechooser para obtener el url del archivo xml a abrir
          String path="";
-            JFileChooser abrirArchivo = new JFileChooser();
+            JFileChooser abrirArchivo = new JFileChooser("C:/Users/Mynor/Documents/NetBeansProjects/Scrabble/src/ArchivosXML");
             //Con esto solamente podamos abrir archivos
             abrirArchivo.setFileSelectionMode( JFileChooser.FILES_ONLY );
+             FileNameExtensionFilter filtroxml=new FileNameExtensionFilter("XML,xml","xml","XML");
  
             int seleccion = abrirArchivo.showOpenDialog( this );
  
@@ -145,6 +322,9 @@ public class Inicio extends javax.swing.JFrame {
 
     private void ButtonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonJugarActionPerformed
         // TODO add your handling code here:
+        
+        System.out.println("el timpo del sistema en milisegundos es : "+((System.currentTimeMillis()%0.001)));
+        this.llenadoColaInicial();
         FormularioJugadores Jugadores = new FormularioJugadores();
         Jugadores.setVisible(true);
         
