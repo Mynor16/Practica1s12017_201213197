@@ -54,7 +54,7 @@ public class Inicio extends javax.swing.JFrame {
         
         for(int k=1; k<90;){
             //random = (int) (System.currentTimeMillis()%100)/4;
-            random = (int) (Math.random()*100);
+            random = (int) (Math.random()*100)/2;
             System.out.println(k+") provando valor "+ random + " para la cola");
             
                 switch(random){
@@ -227,6 +227,7 @@ public class Inicio extends javax.swing.JFrame {
         ButtonJugar = new javax.swing.JButton();
         ButtonCargar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -249,6 +250,13 @@ public class Inicio extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic Light", 1, 24)); // NOI18N
         jLabel1.setText("Scrabble");
 
+        jButton1.setText("Probar cola");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -265,7 +273,11 @@ public class Inicio extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(144, 144, 144)
-                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(jButton1))
+                    .addComponent(jLabel1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -275,7 +287,9 @@ public class Inicio extends javax.swing.JFrame {
                 .addComponent(ButtonJugar)
                 .addGap(85, 85, 85)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addComponent(ButtonCargar)
                 .addContainerGap())
         );
@@ -330,6 +344,20 @@ public class Inicio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_ButtonJugarActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        char letra = colaFichas.inicio.letra;
+        int valor = colaFichas.inicio.valor; 
+        colaFichas.IncertarFicha(letra, valor);
+        colaFichas.sacarFicha();
+        letra = colaFichas.inicio.letra;
+        valor = colaFichas.inicio.valor; 
+        colaFichas.IncertarFicha(letra, valor);
+        colaFichas.sacarFicha();
+        colaFichas.graficar();
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -367,6 +395,7 @@ public class Inicio extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ButtonCargar;
     private javax.swing.JButton ButtonJugar;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

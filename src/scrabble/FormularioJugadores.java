@@ -13,6 +13,7 @@ public class FormularioJugadores extends javax.swing.JFrame {
     /**
      * Creates new form FormularioJugadores
      */
+    public String nombreJugador;
     public FormularioJugadores() {
         initComponents();
     }
@@ -87,14 +88,16 @@ public class FormularioJugadores extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
          //lcJugadores.LCIncertFinal("Mynor");
+        if(!"".equals(jTextField1.getText())){
         scrabble.Inicio.lcJugadores.LCIncertFinal(jTextField1.getText());
-        
+        this.nombreJugador=jTextField1.getText();
         jTextField1.setText("");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        scrabble.Inicio.lcJugadores.graficarCirculo();
+        if(!scrabble.Inicio.lcJugadores.LCVacia()) scrabble.Inicio.lcJugadores.graficarCirculo();
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

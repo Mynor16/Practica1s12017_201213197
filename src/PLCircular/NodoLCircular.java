@@ -4,6 +4,8 @@
  */
 package PLCircular;
 
+import scrabble.Inicio;
+
 /**
  *
  * @author Mynor
@@ -11,6 +13,7 @@ package PLCircular;
 public class NodoLCircular {
     String nombre;
     int punteo;
+    ListaMano mano;
     NodoLCircular siguiente;
     
     public void NodoLcircular(){
@@ -18,6 +21,7 @@ public class NodoLCircular {
         nombre = "";
         punteo= 0;
         siguiente=null;
+        mano = new ListaMano();
         
     }
 }

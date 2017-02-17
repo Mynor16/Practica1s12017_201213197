@@ -13,9 +13,9 @@ import java.util.logging.Logger;
  * @author Mynor
  */
 public class Cola {
-    NodoCola inicio;
-    int cantidad;
-    String nodos="", relaciones="";
+    public NodoCola inicio;
+    public int cantidad;
+    public String nodos="", relaciones="";
     
     public void Cola(){
         inicio = null;
@@ -59,6 +59,8 @@ public class Cola {
     
     //++++++++++++++++++++++++++++++++++++
     public void graficar(){
+        nodos="";
+        relaciones="";
          String textoCola;
          String pathCL=new String();
         // Verifica si la lista contiene elementos.

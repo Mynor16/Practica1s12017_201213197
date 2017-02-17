@@ -64,6 +64,8 @@ public class ListaCircular {
         }
         // Incrementa el contador de tamaño de la lista
         cantidad++;
+        //fin.mano.llenarMano();
+        //fin.mano.graficarMano(nombre);
     }
     
     //metodo que verifica si el elemento ya existe en la lista

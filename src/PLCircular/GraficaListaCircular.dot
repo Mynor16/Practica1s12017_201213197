@@ -1,10 +1,6 @@
 digraph G 
- {yo;
-tu;
-el;
-ella;
-yo->tu;
-tu->el;
-el->ella;
-ella->yo;
+ {Primero;
+Antonio;
+Primero->Antonio;
+Antonio->Primero;
 }
