@@ -1,0 +1,14 @@
+digraph G 
+ { 
+Mynor;
+0 [label=M1];
+1 [label=y2];
+2 [label=n3];
+3 [label=o4];
+4 [label=r5];
+Mynor->0;
+0->1;
+1->2;
+2->3;
+3->4;
+}

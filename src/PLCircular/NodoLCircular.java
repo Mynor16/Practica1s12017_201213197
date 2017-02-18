@@ -4,8 +4,6 @@
  */
 package PLCircular;
 
-import scrabble.Inicio;
-
 /**
  *
  * @author Mynor

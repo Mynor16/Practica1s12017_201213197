@@ -22,8 +22,6 @@ public class ListaMano {
     public ListaMano (){
         inicio=null;
         cantidad=0;
-        this.llenarMano();
-        graficarMano("jugador de turno");
     }
     public boolean LFvacia (){
         if (inicio == null){
@@ -37,73 +35,49 @@ public class ListaMano {
      }
      
      public void LFIncertFinal(char caracter, int valor){
-        // Define un nuevo nodo.
+         
          PCola.NodoCola nuevo= new PCola.NodoCola();
-        // Agrega al valor al nodo.
         nuevo.IDFicha= cantidad;
+        nuevo.valor= valor;
+        nuevo.letra=caracter;
         System.out.println("el nodo "+cantidad+" tomará el valo: "+nuevo.letra);
-        // Consulta si la lista esta vacia.
         if (LFvacia()) {
-            // Inicializa la lista agregando como inicio al nuevo nodo.
             inicio = nuevo;
             System.out.println("el nodo "+cantidad+" ya tomó el valo: "+inicio.letra);
-        // Caso contrario recorre la lista hasta llegar al ultimo nodo
-        //y agrega el nuevo.
         } else{
-            // Crea ua copia de la lista.
             PCola.NodoCola aux = inicio;
-            // Recorre la lista hasta llegar al ultimo nodo.
             while(aux.siguiente != null){
                 aux = aux.siguiente;
             }
-            // Agrega el nuevo nodo al final de la lista.
             aux.siguiente = nuevo;
             System.out.println("el nodo "+cantidad+" ya tomó el valo: "+nuevo.letra);
         }
-        // Incrementa el contador de tamaño de la lista
         this.cantidad++;
      }
      public void CambiarFicha(char fichaPrevia){
          
-          // Crea una copia de la lista.
         PCola.NodoCola aux = inicio;
-        // Bandera para indicar si el valor existe.
         boolean encontrado = false;
-        // Recorre la lista hasta encontrar el elemento o hasta 
-        // llegar al final de la lista.
         while(aux != null && encontrado != true){
-            // Consulta si el valor del nodo es igual al de referencia.
             if (fichaPrevia == aux.letra){
-                // Cambia el valor de la bandera.
                 encontrado = true;
             }
             else{
-                // Avansa al siguiente. nodo.
                 aux = aux.siguiente;
             }
         }
         if(encontrado){
-            // Consulta si el nodo a eliminar es el pirmero
             if (inicio.letra == fichaPrevia) {
-                // El primer nodo apunta al siguiente.
                 Inicio.colaFichas.IncertarFicha(inicio.letra, inicio.valor);
                 inicio = inicio.siguiente;
             } else{
-                // Crea ua copia de la lista.
-                //PCola.NodoCola aux = inicio;
-                // Recorre la lista hasta llegar al nodo anterior 
-                // al de referencia.
                 while(aux.siguiente.letra != fichaPrevia){
                     aux = aux.siguiente;
                 }
-                // Guarda el nodo siguiente del nodo a eliminar.
                 Inicio.colaFichas.IncertarFicha(aux.siguiente.letra, aux.siguiente.valor);
                 PCola.NodoCola siguiente = aux.siguiente.siguiente;
-                // Enlaza el nodo anterior al de eliminar con el 
-                // sguiente despues de el.
                 aux.siguiente=siguiente;  
             }
-            // Disminuye el contador de tamaño de la lista.
             cantidad--;
         }
      }

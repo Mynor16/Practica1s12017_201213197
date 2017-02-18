@@ -41,12 +41,19 @@ public class ListaCircular {
         if (LCVacia()) {
             // Inicializa la lista agregando como inicio al nuevo nodo.
             inicio = nuevo;
+            inicio.mano=new ListaMano();
+            inicio.mano.LFIncertFinal('M', 1);
+            inicio.mano.LFIncertFinal('y', 2);
+            inicio.mano.LFIncertFinal('n', 3);
+            inicio.mano.LFIncertFinal('o', 4);
+            inicio.mano.LFIncertFinal('r', 5);
             // De igual forma el ultimo nodo sera el nuevo.
             fin = nuevo;
             // Y el puntero del ultimo debe apuntar al primero.
             fin.siguiente = inicio;
         // Caso contrario el nodo se agrega al final de la lista.
             System.out.println("el nombre "+fin.nombre+"fue incertado con exito en la posición"+cantidad);
+            inicio.mano.graficarMano(nombre);
         } else{
             //verificamos que el nombre a ingresar aun o existea en la lista
             if(existe(nuevo.nombre)){

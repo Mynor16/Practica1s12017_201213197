@@ -17,6 +17,7 @@ public class Inicio extends javax.swing.JFrame {
     public static PLSimple.ListaSimple lsPalabras;
     public static PLCircular.ListaCircular lcJugadores;
     public static PCola.Cola colaFichas;
+    public static PMatriz.Matriz tableroLogico;
     /**
      * Creates new form Inicio
      */
@@ -28,6 +29,10 @@ public class Inicio extends javax.swing.JFrame {
         lsPalabras =new PLSimple.ListaSimple();
         lcJugadores= new PLCircular.ListaCircular();
         colaFichas = new PCola.Cola();
+        //implementacion de prueba del tablero logico
+        tableroLogico=new PMatriz.Matriz();
+        tableroLogico.crearMatriz(2, 2);
+        tableroLogico.graficarMatriz();
         /*lsPalabras.LSIncertFinal("Cero");
         lsPalabras.LSIncertFinal("Uno");
         lsPalabras.LSIncertFinal("Dos");

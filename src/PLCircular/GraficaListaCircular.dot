@@ -1,6 +1,6 @@
 digraph G 
- {Primero;
-Antonio;
-Primero->Antonio;
-Antonio->Primero;
+ {Mynor;
+alguien mas;
+Mynor->alguien mas;
+alguien mas->Mynor;
 }
