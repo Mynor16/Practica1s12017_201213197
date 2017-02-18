@@ -15,9 +15,11 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author Mynor
  */
 public class Lectorxml {
-    
+    static int dimension;
+    static String cadenaDim;
     public static void main(String[] args) {
-        
+        dimension=0;
+        cadenaDim="";
         
 
    }
@@ -77,7 +79,12 @@ public class Lectorxml {
 		}
                 if (bdimension) {
 			System.out.println("dimensión : " + new String(ch, start, length));
-			bcasilla = false;
+                         cadenaDim= new String(ch, start, length);
+                        dimension = Integer.parseInt(cadenaDim);
+                        System.out.println("se creará la lista de tamaño:"+dimension);
+                        Inicio.tableroLogico.crearMatriz(dimension, dimension);
+                        Inicio.tableroLogico.graficarMatriz();
+			bdimension = false;
 		}
 
 	}

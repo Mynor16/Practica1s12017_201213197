@@ -113,6 +113,7 @@ public class Matriz {
                     aux.abajo.arriba = aux;//y lo enlazamos al actual
                     aux.derecha=aux.arriba.derecha.abajo;//enlasamos el nodo actual con el de la derecha
                     aux.derecha.izquierda=aux;//y el de la derecha con el actual
+                    aux=aux.derecha;
                     }
                 }
             }
@@ -120,6 +121,10 @@ public class Matriz {
     }
     
     public void graficarMatriz(){
+        
+        nodos="";
+        relaciones="";
+        textoMatriz="";
         
         NodoMatriz aux = inicio; //posicionamos nuestro nodo auxiliar en el inicio
         NodoMatriz siguienteFila = new NodoMatriz();//este nodo nos servirá para saber endonde inicia la sigiente fial
@@ -130,63 +135,64 @@ public class Matriz {
                     if(i==0){//si es la primer fila y la primer columna
                         nodos+= aux.id+";"+"\n";
                         nodos+= aux.derecha.id+";"+"\n";
-                        relaciones+=aux.id+"->"+aux.derecha.id;
-                        relaciones+=aux.derecha.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.derecha.id+";"+"\n";
+                        relaciones+=aux.derecha.id+"->"+aux.id+";"+"\n";
                          nodos+= aux.abajo.id+";"+"\n";
-                        relaciones+=aux.id+"->"+aux.abajo.id;
-                        relaciones+=aux.abajo.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
+                        relaciones+=aux.abajo.id+"->"+aux.id+";"+"\n";
                         siguienteFila=aux.abajo;//guardamos el nodo de la posición 1,2 que nos servirá para crear la siguiente fila 
                         aux=aux.derecha;// movemos nuestro nodo auxiliar al de la derecha
                     }else if(i== x-1){//si es la ultima columna de la primer fila
                         //nodos+= aux.id+";"+"\n";
                         nodos+= aux.abajo.id+";"+"\n";
-                        relaciones+=aux.id+"->"+aux.abajo.id;
-                        relaciones+=aux.abajo.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
+                        relaciones+=aux.abajo.id+"->"+aux.id+";"+"\n";
                         aux=siguienteFila;// pasamos al inicio de la siguiente fila (la segunda)
                     }else{//si es un nodo intermedio de una fila intemedia
                     nodos+= aux.abajo.id+";"+"\n";
-                        relaciones+=aux.id+"->"+aux.abajo.id;
-                        relaciones+=aux.abajo.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
+                        relaciones+=aux.abajo.id+"->"+aux.id+"\n";
                         nodos+= aux.derecha.id+";"+"\n";
-                        relaciones+=aux.id+"->"+aux.derecha.id;
-                        relaciones+=aux.derecha.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.derecha.id+";"+"\n";
+                        relaciones+=aux.derecha.id+"->"+aux.id+";"+"\n";
                         aux=aux.derecha;//avansamos a la siguiente posición
                         
                     }
                 }//si no es la primer fila
                 else if(j == y-1){//si es la ultima fila
                     if(i==0){//si es la primer columna de la ultima fila
-                        relaciones+=aux.id+"->"+aux.derecha.id;
-                        relaciones+=aux.derecha.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.derecha.id+";"+"\n";
+                        relaciones+=aux.derecha.id+"->"+aux.id+";"+"\n";
                         aux=aux.derecha;//avansamos a la siguiente posición
                         siguienteFila=null;// y ya no necesitamos saber cual es la siguiente fila porque no existe
                     }else if(i== x-1){//si es la ultima columna de la ultima fila
                         JOptionPane.showMessageDialog( null, "La matriz fue graficada con exito (creo)" ); //lo logramos
                     }else{// si es la ultima fila pero no el inicio ni el final
-                        relaciones+=aux.id+"->"+aux.derecha.id;
-                        relaciones+=aux.derecha.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.derecha.id+";"+"\n";
+                        relaciones+=aux.derecha.id+"->"+aux.id+";"+"\n";
                          aux=aux.derecha;//seguimos avansando
                     }
                 }else{//si no es la primer ni la ultima fila
                     if(i==0){//si es la primer columna de una fila media
                          nodos+= aux.abajo.id+";"+"\n";
-                        relaciones+=aux.id+"->"+aux.abajo.id;
-                        relaciones+=aux.abajo.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
+                        relaciones+=aux.abajo.id+"->"+aux.id+";"+"\n";
                         siguienteFila=aux.abajo;//guardamos el inicio de la sigueitne fila
-                        relaciones+=aux.id+"->"+aux.derecha.id;
-                        relaciones+=aux.derecha.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.derecha.id+";"+"\n";
+                        relaciones+=aux.derecha.id+"->"+aux.id+";"+"\n";
                         aux=aux.derecha;//y nos movemos al siguiente nodo
                     }else if(i ==x-1){//si es la ultima columna de una fila media
                          nodos+= aux.abajo.id+";"+"\n";
-                        relaciones+=aux.id+"->"+aux.abajo.id;
-                        relaciones+=aux.abajo.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
+                        relaciones+=aux.abajo.id+"->"+aux.id+";"+"\n";
                         aux=siguienteFila;// pasamos al inicio de la siguiente fila
                     }else{//si es un nodo intermedio de una fila intemedia
                         nodos+= aux.abajo.id+";"+"\n";
-                        relaciones+=aux.id+"->"+aux.abajo.id;
-                        relaciones+=aux.abajo.id+"->"+aux.id;
-                        relaciones+=aux.id+"->"+aux.derecha.id;
-                        relaciones+=aux.derecha.id+"->"+aux.id;
+                        relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
+                        relaciones+=aux.abajo.id+"->"+aux.id+";"+"\n";
+                        relaciones+=aux.id+"->"+aux.derecha.id+";"+"\n";
+                        relaciones+=aux.derecha.id+"->"+aux.id+";"+"\n";
+                        aux=aux.derecha;
                     }
                 }
         }

@@ -31,8 +31,8 @@ public class Inicio extends javax.swing.JFrame {
         colaFichas = new PCola.Cola();
         //implementacion de prueba del tablero logico
         tableroLogico=new PMatriz.Matriz();
-        tableroLogico.crearMatriz(2, 2);
-        tableroLogico.graficarMatriz();
+        //tableroLogico.crearMatriz(6, 6);
+        //tableroLogico.graficarMatriz();
         /*lsPalabras.LSIncertFinal("Cero");
         lsPalabras.LSIncertFinal("Uno");
         lsPalabras.LSIncertFinal("Dos");
