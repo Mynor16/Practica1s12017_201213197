@@ -1,14 +1,18 @@
 digraph G 
  { 
-Mynor;
-0 [label=M1];
-1 [label=y2];
-2 [label=n3];
-3 [label=o4];
-4 [label=r5];
-Mynor->0;
+tercer jugador;
+0 [label=t1];
+1 [label=f4];
+2 [label=o1];
+3 [label=a1];
+4 [label=u1];
+5 [label=o1];
+6 [label=d2];
+tercer jugador->0;
 0->1;
 1->2;
 2->3;
 3->4;
+4->5;
+5->6;
 }

@@ -1,12 +1,8 @@
 digraph G 
- {Mynor;
-Astrid;
-Cos;
-Leonel;
-Ana;
-Mynor->Astrid;
-Astrid->Cos;
-Cos->Leonel;
-Leonel->Ana;
-Ana->Mynor;
+ {Primer Jugador;
+segundo;
+tercer jugador;
+Primer Jugador->segundo;
+segundo->tercer jugador;
+tercer jugador->Primer Jugador;
 }

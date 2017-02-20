@@ -53,7 +53,9 @@ public class Cola {
      }
     
     public void sacarFicha(){
+        System.out.println("el nodo "+inicio.letra+" con id:"+inicio.IDFicha+" será extraido de la pila");
         if(!colaVacia()){inicio = inicio.siguiente;}
+        System.out.println("el nuevo inicio de la cola es: "+inicio.letra);
     }
     
     

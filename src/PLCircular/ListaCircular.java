@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import scrabble.Inicio;
 
 /**
  *
@@ -37,25 +38,24 @@ public class ListaCircular {
         // Agrega al valor al nodo.
         nuevo.nombre=nombre;
         System.out.println("se incertara el nombre: "+nuevo.nombre+"en la lista circular");
+        
+        
+        
         // Consulta si la lista esta vacia.
         if (LCVacia()) {
             // Inicializa la lista agregando como inicio al nuevo nodo.
             inicio = nuevo;
-            inicio.mano=new ListaMano();
-            inicio.mano.LFIncertFinal('M', 1);
-            inicio.mano.LFIncertFinal('y', 2);
-            inicio.mano.LFIncertFinal('n', 3);
-            inicio.mano.LFIncertFinal('o', 4);
-            inicio.mano.LFIncertFinal('r', 5);
+            inicio.mano = new ListaMano();
+            inicio.mano.llenarMano();
+            Inicio.colaFichas.graficar();
             // De igual forma el ultimo nodo sera el nuevo.
             fin = nuevo;
             // Y el puntero del ultimo debe apuntar al primero.
             fin.siguiente = inicio;
-        // Caso contrario el nodo se agrega al final de la lista.
-            System.out.println("el nombre "+fin.nombre+"fue incertado con exito en la posición"+cantidad);
+            System.out.println("el nombre "+fin.nombre+" fue incertado con exito en la posición "+cantidad);
             inicio.mano.graficarMano(nombre);
-        } else{
-            //verificamos que el nombre a ingresar aun o existea en la lista
+        } else{// Caso contrario el nodo se agrega al final de la lista.
+            //verificamos que el nombre a ingresar aun no existea en la lista
             if(existe(nuevo.nombre)){
                 JOptionPane.showMessageDialog( null, "EL nombre que ingresaste ya existe!, Intentalo de nuevo" );
             }else{
@@ -63,16 +63,18 @@ public class ListaCircular {
             fin.siguiente = nuevo;
             // Apuntamos con el nuevo nodo al inicio de la lista.
             nuevo.siguiente = inicio;
-            // Como ahora como el nuevo nodo es el ultimo se actualiza
-            // la variable ultimo.
+            // Como ahora como el nuevo nodo es el ultimo se actualiza la variable ultimo.
             fin = nuevo;
-            System.out.println("el nombre "+fin.nombre+"fue incertado con exito en la posición"+cantidad);
+            fin.mano = new ListaMano();
+            fin.mano.llenarMano();
+            Inicio.colaFichas.graficar();
+            System.out.println("el nombre "+fin.nombre+" fue incertado con exito en la posición "+cantidad);
+            fin.mano.graficarMano(nombre);
             }
         }
         // Incrementa el contador de tamaño de la lista
+        
         cantidad++;
-        //fin.mano.llenarMano();
-        //fin.mano.graficarMano(nombre);
     }
     
     //metodo que verifica si el elemento ya existe en la lista

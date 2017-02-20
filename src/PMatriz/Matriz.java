@@ -49,6 +49,8 @@ public class Matriz {
                 System.out.print(" elemento"+i+" - ");
                 if(j== 0){// si es la primer fila
                     if(i==0){//si es la primer fila y la primer columna
+                        aux.x=i;
+                        aux.y=j;
                         aux.derecha = new NodoMatriz();//creamos el nodo de la derecha
                         aux.derecha.id=totalCasillas;
                         totalCasillas ++;
@@ -60,12 +62,16 @@ public class Matriz {
                         siguienteFila=aux.abajo;//guardamos el nodo de la posición 1,2 que nos servirá para crear la siguiente fila 
                         aux=aux.derecha;// movemos nuestro nodo auxiliar al de la derecha
                     }else if(i== x-1){//si es la ultima columna de la primer fila
+                        aux.x=i;
+                        aux.y=j;
                         aux.abajo = new NodoMatriz();//creamos el nodo de abajo
                         aux.abajo.id=totalCasillas;
                         totalCasillas ++;
                         aux.abajo.arriba=aux;//lo enlazamos con el actual
                         aux=siguienteFila;// pasamos al inicio de la siguiente fila (la segunda)
                     }else{//si es un nodo intermedio de la primer fila
+                        aux.x=i;
+                        aux.y=j;
                     aux.abajo = new NodoMatriz();//creamos el nodo de abajo
                     aux.abajo.id=totalCasillas;
                     totalCasillas ++;
@@ -79,19 +85,27 @@ public class Matriz {
                 }//si no es la primer fila
                 else if(j == y-1){//si es la ultima fila
                     if(i==0){//si es la primer columna de la ultima fila
+                        aux.x=i;
+                        aux.y=j;
                         aux.derecha = aux.arriba.derecha.abajo;//enlasamos el nodo actual al de la derecha
                         aux.derecha.izquierda=aux;//y el de la derecha con el actual
                         aux=aux.derecha;//avansamos a la siguiente posición
                         //siguienteFila=null;// y ya no necesitamos saber cual es la siguiente fila porque no existe
                     }else if(i== x-1){//si es la ultima columna de la ultima fila
+                        aux.x=i;
+                        aux.y=j;
                         JOptionPane.showMessageDialog( null, "La matriz fue creada exitosamente (creo)" ); //lo logramos
                     }else{// si es la ultima fila pero no el inicio ni el final
+                        aux.x=i;
+                        aux.y=j;
                          aux.derecha=aux.arriba.derecha.abajo;//enlasamos el nodo actual con el de la derecha
                          aux.derecha.izquierda=aux;//y el de la derecha con el actual
                          aux=aux.derecha;//seguimos avansando
                     }
                 }else{//si no es la primer ni la ultima fila
                     if(i==0){//si es la primer columna de una fila media
+                        aux.x=i;
+                        aux.y=j;
                     aux.abajo = new NodoMatriz();//creamos el nodo de abajo
                     aux.abajo.id=totalCasillas;
                     totalCasillas ++;
@@ -101,12 +115,16 @@ public class Matriz {
                     aux.derecha.izquierda=aux;//y el de la derecha con el actual
                     aux=aux.derecha;//y nos movemos al siguiente nodo
                     }else if(i ==x-1){//si es la ultima columna de una fila media
+                        aux.x=i;
+                        aux.y=j;
                         aux.abajo = new NodoMatriz();//creamos el nodo de abajo
                         aux.abajo.id=totalCasillas;
                         totalCasillas ++;
                         aux.abajo.arriba=aux;//lo enlazamos con el actual
                         aux=siguienteFila;// pasamos al inicio de la siguiente fila
                     }else{//si es un nodo intermedio de una fila intemedia
+                        aux.x=i;
+                        aux.y=j;
                     aux.abajo = new NodoMatriz();//creamos el nodo de abajo
                     aux.abajo.id=totalCasillas;
                     totalCasillas ++;
@@ -132,27 +150,28 @@ public class Matriz {
         for (int j = 0; j < y; j++){//este for crea las filas en el eje y
             for(int i = 0; i< x; i++){//este for crea las casillas de la matriz en el eje x
                 if(j== 0){// si es la primer fila
-                    if(i==0){//si es la primer fila y la primer columna
-                        nodos+= aux.id+";"+"\n";
-                        nodos+= aux.derecha.id+";"+"\n";
+                    if(i==0){//si es la primer fila y la primer columna  +" [label="+aux.letra+aux.valor+"];"
+                        //nodos+= aux.id+";"+"\n";
+                        nodos+= aux.id+"[label =x"+aux.x+"y"+aux.y +"];"+"\n";
+                        nodos+= aux.derecha.id+"[label =x"+aux.derecha.x+"y"+aux.derecha.y +"];"+"\n";
                         relaciones+=aux.id+"->"+aux.derecha.id+";"+"\n";
                         relaciones+=aux.derecha.id+"->"+aux.id+";"+"\n";
-                         nodos+= aux.abajo.id+";"+"\n";
+                        nodos+= aux.abajo.id+"[label =x"+aux.abajo.x+"y"+aux.abajo.y +"];"+"\n";
                         relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
                         relaciones+=aux.abajo.id+"->"+aux.id+";"+"\n";
                         siguienteFila=aux.abajo;//guardamos el nodo de la posición 1,2 que nos servirá para crear la siguiente fila 
                         aux=aux.derecha;// movemos nuestro nodo auxiliar al de la derecha
                     }else if(i== x-1){//si es la ultima columna de la primer fila
                         //nodos+= aux.id+";"+"\n";
-                        nodos+= aux.abajo.id+";"+"\n";
+                        nodos+= aux.abajo.id+"[label =x"+aux.abajo.x+"y"+aux.abajo.y +"];"+"\n";
                         relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
                         relaciones+=aux.abajo.id+"->"+aux.id+";"+"\n";
                         aux=siguienteFila;// pasamos al inicio de la siguiente fila (la segunda)
                     }else{//si es un nodo intermedio de una fila intemedia
-                    nodos+= aux.abajo.id+";"+"\n";
+                    nodos+= aux.abajo.id+"[label =x"+aux.abajo.x+"y"+aux.abajo.y +"];"+"\n";
                         relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
                         relaciones+=aux.abajo.id+"->"+aux.id+"\n";
-                        nodos+= aux.derecha.id+";"+"\n";
+                        nodos+= aux.derecha.id+"[label =x"+aux.derecha.x+"y"+aux.derecha.y +"];"+"\n";
                         relaciones+=aux.id+"->"+aux.derecha.id+";"+"\n";
                         relaciones+=aux.derecha.id+"->"+aux.id+";"+"\n";
                         aux=aux.derecha;//avansamos a la siguiente posición
@@ -174,7 +193,7 @@ public class Matriz {
                     }
                 }else{//si no es la primer ni la ultima fila
                     if(i==0){//si es la primer columna de una fila media
-                         nodos+= aux.abajo.id+";"+"\n";
+                         nodos+= aux.abajo.id+"[label =x"+aux.abajo.x+"y"+aux.abajo.y +"];"+"\n";
                         relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
                         relaciones+=aux.abajo.id+"->"+aux.id+";"+"\n";
                         siguienteFila=aux.abajo;//guardamos el inicio de la sigueitne fila
@@ -182,12 +201,12 @@ public class Matriz {
                         relaciones+=aux.derecha.id+"->"+aux.id+";"+"\n";
                         aux=aux.derecha;//y nos movemos al siguiente nodo
                     }else if(i ==x-1){//si es la ultima columna de una fila media
-                         nodos+= aux.abajo.id+";"+"\n";
+                         nodos+= aux.abajo.id+"[label=x"+aux.abajo.x+"y"+aux.abajo.y +"];"+"\n";
                         relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
                         relaciones+=aux.abajo.id+"->"+aux.id+";"+"\n";
                         aux=siguienteFila;// pasamos al inicio de la siguiente fila
                     }else{//si es un nodo intermedio de una fila intemedia
-                        nodos+= aux.abajo.id+";"+"\n";
+                        nodos+= aux.abajo.id+"[label=x"+aux.abajo.x+"y"+aux.abajo.y +"];"+"\n";
                         relaciones+=aux.id+"->"+aux.abajo.id+";"+"\n";
                         relaciones+=aux.abajo.id+"->"+aux.id+";"+"\n";
                         relaciones+=aux.id+"->"+aux.derecha.id+";"+"\n";
