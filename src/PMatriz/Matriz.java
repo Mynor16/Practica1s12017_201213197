@@ -139,6 +139,14 @@ public class Matriz {
         }System.out.println("la matriz se creó con "+totalCasillas+" casillas en total");
     }
     
+    public void establecerMult(int x, int y, int mult){
+        
+        buscarCasilla(x,y);
+        actual.multiple=mult;
+        System.out.println("la casilla "+(1+actual.x)+","+(actual.y+1)+" adquirió la multiplicidad "+actual.multiple);
+        JOptionPane.showMessageDialog( null,"la casilla "+(1+actual.x)+","+(actual.y+1)+" adquirió la multiplicidad "+actual.multiple);
+    }
+    
     public void buscarCasilla(int w, int z){
         boolean encontrado=false;
         this.actual=inicio;
@@ -151,7 +159,7 @@ public class Matriz {
             for(int i=0; i<this.x;i++){
                 if(aux.x==w & aux.y==z){
                     this.actual=aux;
-                    JOptionPane.showMessageDialog( null, "El elemento"+actual.x+","+actual.y+" fue encontrado!!!! con id"+actual.id );
+                    JOptionPane.showMessageDialog( null, "El elemento"+(1+actual.x)+","+(actual.y+1)+" fue encontrado!!!! con id"+actual.id );
                     System.out.println("La casilla seleccionada es de multiplicidad x"+actual.multiple);
                     encontrado=true;
                     break;

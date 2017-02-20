@@ -4,6 +4,7 @@
  */
 package scrabble;
 
+import javax.swing.JOptionPane;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.Attributes;
@@ -42,6 +43,8 @@ public class Lectorxml {
 	boolean bpalabra = false;
         boolean bcasilla = false;
         boolean bdimension = false;
+        boolean bdobles = false;
+        boolean btriples = false;
         boolean bx = false;
         boolean by = false;
 
@@ -62,8 +65,15 @@ public class Lectorxml {
 		}
                 if (qName.equalsIgnoreCase("x")) {
                     bx=true;
-                }if(qName.equalsIgnoreCase("y")) {
+                }
+                if(qName.equalsIgnoreCase("y")) {
                     by=true;
+                }
+                if(qName.equalsIgnoreCase("dobles")){
+                    bdobles=true;
+                }
+                if(qName.equalsIgnoreCase("triples")){
+                    btriples=true;
                 }
 
 
@@ -73,6 +83,14 @@ public class Lectorxml {
 		String qName) throws SAXException {
 
 		System.out.println("End Element :" + qName);
+                if ("dobles".equals(qName)){
+                    JOptionPane.showMessageDialog( null,"se encontro el elemento de cierre de: "+qName);
+                    bdobles=false;
+                }else
+                if ( "triples".equals(qName)){
+                    JOptionPane.showMessageDialog( null,"se encontro el elemento de cierre de: "+qName);
+                    btriples=false;
+                }
 
 	}
 
@@ -107,9 +125,14 @@ public class Lectorxml {
                 if (by) {
                     System.out.println("coordenada y : " + new String(ch, start, length));
                     y=Integer.parseInt(new String(ch, start, length));
-                    Inicio.tableroLogico.buscarCasilla(x-1, y-1);
-                    x=0;
-                    y=0;
+                    if (bdobles) {
+                        Inicio.tableroLogico.establecerMult(x, y, 2);
+                        //Inicio.tableroLogico.buscarCasilla(x-1, y-1);
+                    }
+                    if(btriples){
+                        Inicio.tableroLogico.establecerMult(x, y, 3);
+                        //Inicio.tableroLogico.buscarCasilla(x-1, y-1);
+                    }
                     by=false;
                 }
 
