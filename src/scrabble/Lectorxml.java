@@ -15,11 +15,17 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author Mynor
  */
 public class Lectorxml {
+    
     static int dimension;
     static String cadenaDim;
+    static int x,y;
+    
     public static void main(String[] args) {
         dimension=0;
         cadenaDim="";
+        x=0;
+        y=0;
+        
         
 
    }
@@ -36,6 +42,8 @@ public class Lectorxml {
 	boolean bpalabra = false;
         boolean bcasilla = false;
         boolean bdimension = false;
+        boolean bx = false;
+        boolean by = false;
 
 	public void startElement(String uri, String localName,String qName,
                 Attributes attributes) throws SAXException {
@@ -52,6 +60,11 @@ public class Lectorxml {
                 if (qName.equalsIgnoreCase("dimension")) {
 			bdimension = true;
 		}
+                if (qName.equalsIgnoreCase("x")) {
+                    bx=true;
+                }if(qName.equalsIgnoreCase("y")) {
+                    by=true;
+                }
 
 
 	}
@@ -86,6 +99,19 @@ public class Lectorxml {
                         Inicio.tableroLogico.graficarMatriz();
 			bdimension = false;
 		}
+                if (bx) {
+                    System.out.println("coordenada x : " + new String(ch, start, length));
+                    x=Integer.parseInt(new String(ch, start, length));
+                    bx=false;
+                }
+                if (by) {
+                    System.out.println("coordenada y : " + new String(ch, start, length));
+                    y=Integer.parseInt(new String(ch, start, length));
+                    Inicio.tableroLogico.buscarCasilla(x-1, y-1);
+                    x=0;
+                    y=0;
+                    by=false;
+                }
 
 	}
 

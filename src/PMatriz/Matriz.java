@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 public class Matriz {
     
     NodoMatriz inicio;
+    NodoMatriz actual;
     int totalCasillas;
     int casillasActivas;
     int x;
@@ -137,6 +138,58 @@ public class Matriz {
             }
         }System.out.println("la matriz se creó con "+totalCasillas+" casillas en total");
     }
+    
+    public void buscarCasilla(int w, int z){
+        boolean encontrado=false;
+        this.actual=inicio;
+        NodoMatriz aux = inicio;
+        NodoMatriz siguienteFila = new NodoMatriz();
+        for(int j=0; j<this.y;j++){
+            if(encontrado){
+                    break;
+            }else{
+            for(int i=0; i<this.x;i++){
+                if(aux.x==w & aux.y==z){
+                    this.actual=aux;
+                    JOptionPane.showMessageDialog( null, "El elemento"+actual.x+","+actual.y+" fue encontrado!!!! con id"+actual.id );
+                    System.out.println("La casilla seleccionada es de multiplicidad x"+actual.multiple);
+                    encontrado=true;
+                    break;
+                }else{
+                     if(j== 0){// si es la primer fila
+                    if(i==0){//si es la primer fila y la primer columna
+                        siguienteFila=aux.abajo;//guardamos el nodo de la posición 1,2 que nos servirá para crear la siguiente fila 
+                        aux=aux.derecha;// movemos nuestro nodo auxiliar al de la derecha
+                    }else if(i== x-1){//si es la ultima columna de la primer fila
+                        aux=siguienteFila;// pasamos al inicio de la siguiente fila (la segunda)
+                    }else{//si es un nodo intermedio de la primer fila
+                    aux=aux.derecha;//avansamos a la siguiente posición
+                    }
+                }//si no es la primer fila
+                else if(j == y-1){//si es la ultima fila
+                    if(i==0){//si es la primer columna de la ultima fila
+                        aux=aux.derecha;//avansamos a la siguiente posición
+                    }else if(i== x-1){//si es la ultima columna de la ultima fila
+                        JOptionPane.showMessageDialog( null, "El elemento buscado no existe en la matriz" ); //lo logramos
+                    }else{// si es la ultima fila pero no el inicio ni el final
+                         aux=aux.derecha;//seguimos avansando
+                    }
+                }else{//si no es la primer ni la ultima fila
+                    if(i==0){//si es la primer columna de una fila media
+                    siguienteFila=aux.abajo;//guardamos el inicio de la sigueitne fila
+                    aux=aux.derecha;//y nos movemos al siguiente nodo
+                    }else if(i ==x-1){//si es la ultima columna de una fila media
+                        aux=siguienteFila;// pasamos al inicio de la siguiente fila
+                    }else{//si es un nodo intermedio de una fila intemedia
+                    aux=aux.derecha;
+                    }
+                 }      
+               }  
+            }
+          }
+        }
+    }
+    
     
     public void graficarMatriz(){
         
