@@ -18,6 +18,7 @@ public class Inicio extends javax.swing.JFrame {
     public static PLCircular.ListaCircular lcJugadores;
     public static PCola.Cola colaFichas;
     public static PMatriz.Matriz tableroLogico;
+    public static Juego nuevoJuego;
     /**
      * Creates new form Inicio
      */

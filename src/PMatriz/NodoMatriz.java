@@ -14,7 +14,7 @@ public class NodoMatriz {
     int multiple;
     int x;
     int y;
-    PLCircular.NodoLCircular ficha;
+    public PCola.NodoCola ficha;
     NodoMatriz izquierda, derecha, arriba,abajo;
     
     public void NodoMatriz(){
@@ -22,7 +22,8 @@ public class NodoMatriz {
         multiple=1;
         x = 0;
         y = 0;
-        ficha = new PLCircular.NodoLCircular();
+        ficha = new PCola.NodoCola();
+        ficha.letra='_';
         this.izquierda=null;
         this.derecha=null;
         this.arriba=null;

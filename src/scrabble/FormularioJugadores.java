@@ -100,7 +100,12 @@ public class FormularioJugadores extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(!scrabble.Inicio.lcJugadores.LCVacia()) scrabble.Inicio.lcJugadores.graficarCirculo();
+        if(!scrabble.Inicio.lcJugadores.LCVacia()){
+            scrabble.Inicio.lcJugadores.graficarCirculo();
+            Inicio.nuevoJuego = new Juego();
+            Inicio.nuevoJuego.setVisible(true);
+        }
+        
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 

@@ -15,12 +15,12 @@ import javax.swing.JOptionPane;
  */
 public class Matriz {
     
-    NodoMatriz inicio;
-    NodoMatriz actual;
-    int totalCasillas;
-    int casillasActivas;
-    int x;
-    int y;
+    public NodoMatriz inicio;
+    public NodoMatriz actual;
+    public int totalCasillas;
+    public int casillasActivas;
+     public int x;
+    public int y;
     String nodos;
     String relaciones;
     String textoMatriz;
@@ -159,7 +159,7 @@ public class Matriz {
             for(int i=0; i<this.x;i++){
                 if(aux.x==w & aux.y==z){
                     this.actual=aux;
-                    JOptionPane.showMessageDialog( null, "El elemento"+(1+actual.x)+","+(actual.y+1)+" fue encontrado!!!! con id"+actual.id );
+                    //JOptionPane.showMessageDialog( null, "El elemento"+(1+actual.x)+","+(actual.y+1)+" fue encontrado!!!! con id"+actual.id );
                     System.out.println("La casilla seleccionada es de multiplicidad x"+actual.multiple);
                     encontrado=true;
                     break;

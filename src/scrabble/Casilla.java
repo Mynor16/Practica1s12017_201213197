@@ -13,7 +13,7 @@ import javax.swing.JButton;
 public class Casilla extends JButton {
     
     public int x;
-    public int j;
+    public int y;
     public char valor;
     public int mult;
     

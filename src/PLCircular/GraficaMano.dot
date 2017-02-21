@@ -1,14 +1,14 @@
 digraph G 
  { 
-otro;
-0 [label=c3];
-1 [label=r1];
-2 [label=v4];
-3 [label=t1];
+Leonel;
+0 [label=n1];
+1 [label=d2];
+2 [label=t1];
+3 [label=x8];
 4 [label=t1];
 5 [label=e1];
-6 [label=c3];
-otro->0;
+6 [label=d2];
+Leonel->0;
 0->1;
 1->2;
 2->3;
