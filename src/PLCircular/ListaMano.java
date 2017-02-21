@@ -7,6 +7,7 @@ package PLCircular;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import scrabble.Inicio;
 
 /**
@@ -15,8 +16,8 @@ import scrabble.Inicio;
  */
 public class ListaMano {
     
-    PCola.NodoCola inicio;
-    int cantidad;
+    public PCola.NodoCola inicio;
+    public int cantidad;
     String nodos="", relaciones="";
     
     public ListaMano (){
@@ -55,11 +56,12 @@ public class ListaMano {
         this.cantidad++;
      }
      public void CambiarFicha(char fichaPrevia){
-         
+         System.out.println("cambiando ficha : "+fichaPrevia);
         PCola.NodoCola aux = inicio;
         boolean encontrado = false;
         while(aux != null && encontrado != true){
             if (fichaPrevia == aux.letra){
+                System.out.println("ficha : "+fichaPrevia +" encontrada");
                 encontrado = true;
             }
             else{
@@ -69,16 +71,28 @@ public class ListaMano {
         if(encontrado){
             if (inicio.letra == fichaPrevia) {
                 Inicio.colaFichas.IncertarFicha(inicio.letra, inicio.valor);
-                inicio = inicio.siguiente;
+                inicio.letra=Inicio.colaFichas.inicio.letra;
+                inicio.valor=Inicio.colaFichas.inicio.valor;
+                Inicio.colaFichas.sacarFicha();
+                //inicio = inicio.siguiente;
             } else{
                 while(aux.siguiente.letra != fichaPrevia){
                     aux = aux.siguiente;
                 }
+                //debolvemos la ficha a la cola, creandola de nuevo al final de la cola
                 Inicio.colaFichas.IncertarFicha(aux.siguiente.letra, aux.siguiente.valor);
-                PCola.NodoCola siguiente = aux.siguiente.siguiente;
-                aux.siguiente=siguiente;  
+                //reemplasamos los datos de la ficha ya debuelta por los datos de la ficha de turno en la cola
+                aux.siguiente.letra=Inicio.colaFichas.inicio.letra;
+                aux.siguiente.valor=Inicio.colaFichas.inicio.valor;
+                //ahora que la ficha de turno está en la mano, la eliminamos de la cola.
+                Inicio.colaFichas.sacarFicha();
+                
+                //PCola.NodoCola siguiente = aux.siguiente.siguiente;
+                //aux.siguiente=siguiente;  
             }
-            cantidad--;
+            //cantidad--;
+        }else{
+            JOptionPane.showMessageDialog( null,"no se encontró el elemento : "+fichaPrevia+" en la mano del jugador");
         }
      }
      

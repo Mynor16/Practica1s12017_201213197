@@ -9,10 +9,10 @@ package PLCircular;
  * @author Mynor
  */
 public class NodoLCircular {
-    String nombre;
-    int punteo;
-    ListaMano mano;
-    NodoLCircular siguiente;
+    public String nombre;
+    public int punteo;
+    public ListaMano mano;
+    public NodoLCircular siguiente;
     
     public void NodoLcircular(){
         

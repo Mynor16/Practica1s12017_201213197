@@ -16,9 +16,9 @@ import scrabble.Inicio;
  */
 public class ListaCircular {
     
-    NodoLCircular inicio;
-    NodoLCircular fin;
-    int cantidad;
+    public NodoLCircular inicio;
+    public NodoLCircular fin;
+    public int cantidad;
     String nodosC = "";
     String relacionesC = "";
     

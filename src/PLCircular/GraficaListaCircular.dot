@@ -1,8 +1,10 @@
 digraph G 
- {Primer Jugador;
-segundo;
-tercer jugador;
-Primer Jugador->segundo;
-segundo->tercer jugador;
-tercer jugador->Primer Jugador;
+ {Mynor;
+otro;
+alguien;
+alguno;
+Mynor->otro;
+otro->alguien;
+alguien->alguno;
+alguno->Mynor;
 }

@@ -344,7 +344,7 @@ public class Inicio extends javax.swing.JFrame {
     private void ButtonJugarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonJugarActionPerformed
         // TODO add your handling code here:
         
-        System.out.println("el timpo del sistema en milisegundos es : "+((System.currentTimeMillis()%0.001)));
+        //System.out.println("el timpo del sistema en milisegundos es : "+((System.currentTimeMillis()%0.001)));
         this.llenadoColaInicial();
         FormularioJugadores Jugadores = new FormularioJugadores();
         Jugadores.setVisible(true);
@@ -353,7 +353,12 @@ public class Inicio extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        char letra = colaFichas.inicio.letra;
+        
+        lcJugadores.inicio.siguiente.mano.CambiarFicha(lcJugadores.inicio.siguiente.mano.inicio.letra);
+        colaFichas.graficar();
+        lcJugadores.inicio.siguiente.mano.graficarMano(lcJugadores.inicio.siguiente.nombre);
+        
+       /* char letra = colaFichas.inicio.letra;
         int valor = colaFichas.inicio.valor; 
         colaFichas.IncertarFicha(letra, valor);
         colaFichas.sacarFicha();
@@ -361,7 +366,7 @@ public class Inicio extends javax.swing.JFrame {
         valor = colaFichas.inicio.valor; 
         colaFichas.IncertarFicha(letra, valor);
         colaFichas.sacarFicha();
-        colaFichas.graficar();
+        colaFichas.graficar();*/
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
