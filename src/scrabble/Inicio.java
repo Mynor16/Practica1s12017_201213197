@@ -19,6 +19,7 @@ public class Inicio extends javax.swing.JFrame {
     public static PCola.Cola colaFichas;
     public static PMatriz.Matriz tableroLogico;
     public static Juego nuevoJuego;
+    public static PLCircular.NodoLCircular jugadorActual;
     /**
      * Creates new form Inicio
      */
@@ -30,24 +31,9 @@ public class Inicio extends javax.swing.JFrame {
         lsPalabras =new PLSimple.ListaSimple();
         lcJugadores= new PLCircular.ListaCircular();
         colaFichas = new PCola.Cola();
-        //implementacion de prueba del tablero logico
         tableroLogico=new PMatriz.Matriz();
-        //tableroLogico.crearMatriz(6, 6);
-        //tableroLogico.graficarMatriz();
-        /*lsPalabras.LSIncertFinal("Cero");
-        lsPalabras.LSIncertFinal("Uno");
-        lsPalabras.LSIncertFinal("Dos");
-        lsPalabras.LSIncertFinal("Tres");
-        lsPalabras.LSIncertFinal("Cuatro");
-        lsPalabras.LSIncertFinal("Cinco");
-        lsPalabras.graficar();*/
-        /*
-        lcJugadores.LCIncertFinal("Mynor");
-        lcJugadores.LCIncertFinal("Anita");
-        lcJugadores.LCIncertFinal("Toño");
-        lcJugadores.LCIncertFinal("Josuesín");
-        lcJugadores.LCIncertFinal("Tobiberto");
-        lcJugadores.graficarCirculo();*/
+        jugadorActual = new PLCircular.NodoLCircular();
+
     }
     
     
@@ -276,27 +262,25 @@ public class Inicio extends javax.swing.JFrame {
                         .addComponent(ButtonCargar))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ButtonJugar)
-                        .addGap(0, 321, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(144, 144, 144)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jButton1))
-                    .addComponent(jLabel1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel1)
+                .addContainerGap(159, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ButtonJugar)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ButtonJugar)
+                    .addComponent(jButton1))
                 .addGap(85, 85, 85)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addComponent(ButtonCargar)
                 .addContainerGap())
         );

@@ -76,14 +76,14 @@ public class ListaMano {
                 Inicio.colaFichas.sacarFicha();
                 //inicio = inicio.siguiente;
             } else{
-                while(aux.siguiente.letra != fichaPrevia){
+                while(aux.letra != fichaPrevia && aux.siguiente!= null){
                     aux = aux.siguiente;
                 }
                 //debolvemos la ficha a la cola, creandola de nuevo al final de la cola
-                Inicio.colaFichas.IncertarFicha(aux.siguiente.letra, aux.siguiente.valor);
+                Inicio.colaFichas.IncertarFicha(aux.letra, aux.valor);
                 //reemplasamos los datos de la ficha ya debuelta por los datos de la ficha de turno en la cola
-                aux.siguiente.letra=Inicio.colaFichas.inicio.letra;
-                aux.siguiente.valor=Inicio.colaFichas.inicio.valor;
+                aux.letra=Inicio.colaFichas.inicio.letra;
+                aux.valor=Inicio.colaFichas.inicio.valor;
                 //ahora que la ficha de turno está en la mano, la eliminamos de la cola.
                 Inicio.colaFichas.sacarFicha();
                 

@@ -64,7 +64,9 @@ public class ListaSimple {
      }
      //metodo que genera el cuerpo del archivo graphviz y lo envia a graficar.
      public void graficar(){
-         String textoLista;
+         String textoLista ="";
+         nodos="";
+         relaciones="";
          String pathLS=new String();
         // Verifica si la lista contiene elementos.
         if (!LSvacia()) {

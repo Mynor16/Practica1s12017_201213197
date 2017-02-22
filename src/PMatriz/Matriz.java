@@ -95,7 +95,7 @@ public class Matriz {
                     }else if(i== x-1){//si es la ultima columna de la ultima fila
                         aux.x=i;
                         aux.y=j;
-                        JOptionPane.showMessageDialog( null, "La matriz fue creada exitosamente (creo)" ); //lo logramos
+                        JOptionPane.showMessageDialog( null, "La matriz fue creada exitosamente" ); //lo logramos
                     }else{// si es la ultima fila pero no el inicio ni el final
                         aux.x=i;
                         aux.y=j;
@@ -143,8 +143,16 @@ public class Matriz {
         
         buscarCasilla(x,y);
         actual.multiple=mult;
-        System.out.println("la casilla "+(1+actual.x)+","+(actual.y+1)+" adquirió la multiplicidad "+actual.multiple);
-        JOptionPane.showMessageDialog( null,"la casilla "+(1+actual.x)+","+(actual.y+1)+" adquirió la multiplicidad "+actual.multiple);
+        //System.out.println("la casilla "+(1+actual.x)+","+(actual.y+1)+" adquirió la multiplicidad "+actual.multiple);
+        //JOptionPane.showMessageDialog( null,"la casilla "+(1+actual.x)+","+(actual.y+1)+" adquirió la multiplicidad "+actual.multiple);
+    }
+    
+    public void agregarLetra(int x,int y,char letra){
+        
+        buscarCasilla(x,y);
+        actual.ficha= new PCola.NodoCola();
+        actual.ficha.letra=letra;
+        
     }
     
     public void buscarCasilla(int w, int z){
@@ -160,7 +168,7 @@ public class Matriz {
                 if(aux.x==w & aux.y==z){
                     this.actual=aux;
                     //JOptionPane.showMessageDialog( null, "El elemento"+(1+actual.x)+","+(actual.y+1)+" fue encontrado!!!! con id"+actual.id );
-                    System.out.println("La casilla seleccionada es de multiplicidad x"+actual.multiple);
+                    //System.out.println("La casilla seleccionada es de multiplicidad x"+actual.multiple);
                     encontrado=true;
                     break;
                 }else{

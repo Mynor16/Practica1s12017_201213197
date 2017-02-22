@@ -84,11 +84,11 @@ public class Lectorxml {
 
 		System.out.println("End Element :" + qName);
                 if ("dobles".equals(qName)){
-                    JOptionPane.showMessageDialog( null,"se encontro el elemento de cierre de: "+qName);
+                    //JOptionPane.showMessageDialog( null,"se encontro el elemento de cierre de: "+qName);
                     bdobles=false;
                 }else
                 if ( "triples".equals(qName)){
-                    JOptionPane.showMessageDialog( null,"se encontro el elemento de cierre de: "+qName);
+                    //JOptionPane.showMessageDialog( null,"se encontro el elemento de cierre de: "+qName);
                     btriples=false;
                 }
 

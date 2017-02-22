@@ -102,6 +102,7 @@ public class FormularioJugadores extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!scrabble.Inicio.lcJugadores.LCVacia()){
             scrabble.Inicio.lcJugadores.graficarCirculo();
+            Inicio.jugadorActual=Inicio.lcJugadores.inicio;
             Inicio.nuevoJuego = new Juego();
             Inicio.nuevoJuego.setVisible(true);
         }

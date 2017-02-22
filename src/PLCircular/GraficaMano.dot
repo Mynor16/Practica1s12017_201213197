@@ -1,14 +1,14 @@
 digraph G 
  { 
-jugador2;
+ajgñoif;
 0 [label=r1];
-1 [label=z10];
-2 [label=ñ8];
-3 [label=j8];
-4 [label=r1];
-5 [label=v4];
-6 [label=x8];
-jugador2->0;
+1 [label=s1];
+2 [label=j8];
+3 [label=y4];
+4 [label=g2];
+5 [label=n1];
+6 [label=u1];
+ajgñoif->0;
 0->1;
 1->2;
 2->3;
