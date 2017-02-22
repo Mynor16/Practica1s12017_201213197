@@ -1,8 +1,8 @@
 digraph G 
- {Mynor;
-Astrid;
-Leonel;
-Mynor->Astrid;
-Astrid->Leonel;
-Leonel->Mynor;
+ {jugador1;
+jugador2;
+jugador3;
+jugador1->jugador2;
+jugador2->jugador3;
+jugador3->jugador1;
 }

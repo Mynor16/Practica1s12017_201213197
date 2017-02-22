@@ -4,7 +4,13 @@
  */
 package scrabble;
 
+import java.awt.Color;
 import java.awt.GridLayout;
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
@@ -32,14 +38,20 @@ public class Juego extends javax.swing.JFrame {
             for (int i = 0; i < Inicio.tableroLogico.x; i++){
                 Inicio.tableroLogico.buscarCasilla(i, j);
                 Casilla casilla = new Casilla();
-                casilla.x=Inicio.tableroLogico.x;
-                casilla.y=Inicio.tableroLogico.y;
+                casilla.x=Inicio.tableroLogico.actual.x;
+                casilla.y=Inicio.tableroLogico.actual.y;
+                if(Inicio.tableroLogico.actual.multiple == 2){
+                    casilla.setBackground(Color.blue);
+                }
+                if(Inicio.tableroLogico.actual.multiple == 3){
+                    casilla.setBackground(Color.orange);
+                }
                 //casilla.setText(""+Inicio.tableroLogico.actual.ficha.letra);
                 this.jPanel1.add(casilla);
             }
         }
-        //jPanel1.doLayout();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,17 +74,28 @@ public class Juego extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         PanelCola = new javax.swing.JScrollPane();
         jLabel5 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        jTabbedPane1.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentShown(java.awt.event.ComponentEvent evt) {
-                jTabbedPane1ComponentShown(evt);
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
             }
+        });
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
+        jTabbedPane1.addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentResized(java.awt.event.ComponentEvent evt) {
                 jTabbedPane1ComponentResized(evt);
+            }
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                jTabbedPane1ComponentShown(evt);
             }
         });
 
@@ -143,24 +166,39 @@ public class Juego extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Cola de Fichas", PanelCola);
 
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 60, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(75, 75, 75))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
@@ -176,14 +214,14 @@ public class Juego extends javax.swing.JFrame {
 
     private void PanelPalabrasComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PanelPalabrasComponentShown
         // TODO add your handling code here:
-        Icon imagenLS = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLSimple\\imagenLS.jpg");
-        this.jLabel2.setIcon(imagenLS);
+        //Icon imagenLS = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLSimple\\imagenLS.jpg");
+        //this.jLabel2.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLSimple\\imagenLS.jpg"));
     }//GEN-LAST:event_PanelPalabrasComponentShown
 
     private void PanelJugadoresComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PanelJugadoresComponentShown
         // TODO add your handling code here:
-        Icon imagenLC = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenLC.jpg");
-        this.jLabel1.setIcon(imagenLC);
+        //Icon imagenLC = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenLC.jpg");
+        //this.jLabel1.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenLC.jpg"));
     }//GEN-LAST:event_PanelJugadoresComponentShown
 
     private void jLabel3ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel3ComponentShown
@@ -192,8 +230,8 @@ public class Juego extends javax.swing.JFrame {
 
     private void PanelManoComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PanelManoComponentShown
         // TODO add your handling code here:
-        Icon imagenLSM = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenMano.jpg");
-        this.jLabel4.setIcon(imagenLSM);
+        //Icon imagenLSM = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenMano.jpg");
+        //this.jLabel4.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenMano.jpg"));
     }//GEN-LAST:event_PanelManoComponentShown
 
     private void jLabel5ComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_jLabel5ComponentShown
@@ -202,22 +240,21 @@ public class Juego extends javax.swing.JFrame {
 
     private void PanelColaComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PanelColaComponentShown
         // TODO add your handling code here:
-        Icon imagenCL = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PCola\\imagenCL.jpg");
-        this.jLabel5.setIcon(imagenCL);
+        //Icon imagenCL = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PCola\\imagenCL.jpg");
+        //this.jLabel5.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PCola\\imagenCL.jpg"));
     }//GEN-LAST:event_PanelColaComponentShown
 
     private void PanelMatrizComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_PanelMatrizComponentShown
         // TODO add your handling code here:
-        Icon imagenM = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PMatriz\\imagenMatriz.jpg");
-        this.jLabel3.setIcon(imagenM);
-        this.jLabel3.repaint();
+        //Icon imagenM = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PMatriz\\imagenMatriz.jpg");
+        //this.jLabel3.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PMatriz\\imagenMatriz.jpg"));
+        //this.jLabel3.repaint();
     }//GEN-LAST:event_PanelMatrizComponentShown
 
     private void PanelManoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PanelManoMouseEntered
         // TODO add your handling code here:
-        Icon imagenLSM = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenMano.jpg");
-        this.jLabel4.setIcon(imagenLSM);
-        this.jLabel4.repaint();
+       // Icon imagenLSM = new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenMano.jpg");
+        //this.jLabel4.setIcon(imagenLSM);
     }//GEN-LAST:event_PanelManoMouseEntered
 
     private void PanelManoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_PanelManoFocusGained
@@ -226,6 +263,97 @@ public class Juego extends javax.swing.JFrame {
         //this.jLabel4.setIcon(imagenLSM);
         //this.jLabel4.repaint();
     }//GEN-LAST:event_PanelManoFocusGained
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+        
+        //this.jLabel4.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenMano.jpg"));
+        
+        
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        // TODO add your handling code here:
+        
+        
+        int estado = jTabbedPane1.getSelectedIndex();
+        switch(estado){
+            case 0:
+            {
+                try
+                {//
+                    System.out.println("Refrescando la grafica del diccionario de palabras en la pestaña "+estado);
+                    //this.jLabel2.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLSimple\\imagenLS.jpg"));
+                    this.jLabel2.setIcon(new ImageIcon(ImageIO.read(new File ("src\\PLSimple\\imagenLS.jpg"))));
+                }catch( Exception exp){
+                    System.out.println("error al cargar la grafica de diccionario a la etiqueta: "+ exp);
+                }
+                break;
+            }
+            case 1:
+            {
+                try
+                {//this.jLabel2.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLSimple\\imagenLS.jpg"));
+                    System.out.println("Refrescando la grafica de Lista Circular de Jugadores en la pestaña "+estado);
+                    //this.jLabel1.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenLC.jpg"));
+                    this.jLabel1.setIcon(new ImageIcon(ImageIO.read(new File ("src\\PLCircular\\imagenLC.jpg"))));
+                }catch( Exception exp){
+                    System.out.println("error al cargar la imagen a la etiqueta: "+ exp);
+                }
+                break;
+            }
+            case 2:
+                {
+                try
+                {
+                    System.out.println("Refrescando la grafica de la matriz en la pestaña "+estado);
+                    //this.jLabel3.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PMatriz\\imagenMatriz.jpg"));
+                    this.jLabel3.setIcon(new ImageIcon(ImageIO.read(new File ("src\\PMatriz\\imagenMatriz.jpg"))));
+                }catch( Exception exp){
+                    System.out.println("error al cargar la imagen a la etiqueta: "+ exp);
+                }
+                break;
+                }
+            case 3:
+                {
+                try
+                {
+                    //new ImageIcon(ImageIO.read(new File ("src\\PLCircular\\imagenMano.jpg")))
+                    System.out.println("Refrescando la grafica de la mano activa en la pestaña "+estado);
+                    //this.jLabel4.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PLCircular\\imagenMano.jpg"));
+                    this.jLabel4.setIcon(new ImageIcon(ImageIO.read(new File ("src\\PLCircular\\imagenMano.jpg"))));
+                    //this.jLabel4.repaint();
+                }catch( Exception exp){
+                    System.out.println("error al cargar la imagen a la etiqueta: "+ exp);
+                }
+                break;
+            }
+            case 4:
+                {
+                try
+                {
+                    System.out.println("Refrescando la grafica de la cola de fichas en la pestaña "+estado);
+                    //this.jLabel5.setIcon(new ImageIcon("C:\\Users\\Mynor\\Documents\\NetBeansProjects\\Scrabble\\src\\PCola\\imagenCL.jpg"));
+                    //this.jLabel5.repaint();
+                    this.jLabel5.setIcon(new ImageIcon(ImageIO.read(new File ("src\\PCola\\imagenCL.jpg"))));
+                }catch( Exception exp){
+                    System.out.println("error al cargar la imagen a la etiqueta: "+ exp);
+                }
+                break;
+            }
+            default:{
+                    System.out.println("actualizando pestaña numero "+estado);
+                
+                break;
+            }
+        }
+        //this.jTabbedPane1.repaint();
+                //
+            
+        
+        
+        
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
     /**
      * @param args the command line arguments
@@ -273,6 +401,7 @@ public class Juego extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }

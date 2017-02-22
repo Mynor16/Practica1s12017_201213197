@@ -10,12 +10,12 @@ package PMatriz;
  */
 public class NodoMatriz {
     
-    int id;
-    int multiple;
-    int x;
-    int y;
+    public int id;
+    public int multiple;
+    public int x;
+    public int y;
     public PCola.NodoCola ficha;
-    NodoMatriz izquierda, derecha, arriba,abajo;
+    public NodoMatriz izquierda, derecha, arriba,abajo;
     
     public void NodoMatriz(){
         id = 0;
